@@ -1,5 +1,4 @@
-# Frontend Arquivos ADV
-
+# Backend Gerenciador de Arquivos
 ### Padronização do GIT:
 
 * *Nenhum commit deve ser feito diretamente na branch develop*
