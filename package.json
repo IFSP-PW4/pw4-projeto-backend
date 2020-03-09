@@ -18,6 +18,7 @@
   "homepage": "https://github.com/PecoCaballero/projeto-pw4-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "helmet": "^3.21.3",
     "i18n": "^0.8.5"
   },
   "devDependencies": {
