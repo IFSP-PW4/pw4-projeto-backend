@@ -9,7 +9,7 @@ router.use(WIDGETS_ENDPOINT, widgetRouter);
 
 router.use(DOCUMENTS_ENDPOINT, documentsRouter);
 
-//adicionando rotas a partir da rota /user através da pasta user_manager_routes. Calma vander, nao me espanque
+//Calma Vander, nao me espanque... to aprendendo.
 router.use("/user", require("./user/index"));
 
 router.get('/', (req, res) =>

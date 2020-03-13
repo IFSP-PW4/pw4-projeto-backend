@@ -7,7 +7,7 @@ router.post("/userLogin",respondeRequisicao)
 router.get("/",respondeRequisicao)
 
 function respondeRequisicao(req,res){
-    res.send("Voce está na rota "+req.url);
+    res.send(res.__("You are on the route")+" "+req.url);
 }
 
 module.exports = router;

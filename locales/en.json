@@ -3,5 +3,7 @@
 	"Getting {{resourceType}} resource with id {{id}}": "Getting {{resourceType}} resource with id {{id}}",
 	"Hello from {{endpoint}}": "Hello from {{endpoint}}",
 	"Hello from {{ endpoint }}": "Hello from {{ endpoint }}",
-	"Getting {{ resourceType }} resource with id {{ id }}": "Getting {{ resourceType }} resource with id {{ id }}"
+	"Getting {{ resourceType }} resource with id {{ id }}": "Getting {{ resourceType }} resource with id {{ id }}",
+	"You are on the route": "You are on the route",
+	"Voce está na rota": "Voce está na rota"
 }
