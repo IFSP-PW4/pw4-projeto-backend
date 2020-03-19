@@ -23,7 +23,7 @@ flowManagementRouter.post('/create-flow', (req, res) => {
 	res.send(req.__('Creating new flow...'));
 });
 
-flowManagementRouter.put('/edit-flow', (req, res) => {
+flowManagementRouter.put('/:flowId', (req, res) => {
 	const { flowId: id } = req.params;
 
 	res.send(req.__('Updating {{ resourceType }} resource with id {{ id }}', {
@@ -32,7 +32,7 @@ flowManagementRouter.put('/edit-flow', (req, res) => {
 	}));
 });
 
-flowManagementRouter.delete('/delete-flow', (req, res) => {
+flowManagementRouter.delete('/:flowId', (req, res) => {
 	const { flowId: id } = req.params;
 
 	res.send(req.__('Deleting {{ resourceType }} resource with id {{ id }}', {
