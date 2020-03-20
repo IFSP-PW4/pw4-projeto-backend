@@ -1,14 +1,26 @@
-const router = require("express").Router();
+import { Router } from "express";
 
-router.get("/userRegister", respondeRequisicao)
-router.get("/userLogin",respondeRequisicao)
-router.post("/userRegister", respondeRequisicao)
-router.post("/userLogin",respondeRequisicao)
-router.get("/",respondeRequisicao)
+const userRouter = Router();
 
-function respondeRequisicao(req,res){
-    res.send(res.__("You are on the route")+" "+req.url);
-}
+userRouter.get("/", (req, res) => {
+    res.send(res.__("Returning all users"));
+});
 
-module.exports = router;
+userRouter.post("/", (req, res) => {
+    res.send(res.__("Saving new user", { route: req.url }));
+});
+
+userRouter.get("/:userId", (req, res) => {
+    res.send(res.__("Returning user with id {{userId}}", { userId: req.params.userId }));
+});
+
+userRouter.put("/:userId", (req, res) => {
+    res.send(res.__("Updating user with id {{userId}}", { userId: req.params.userId }));
+});
+
+userRouter.get("/login", (req, res) => {
+    res.send(res.__("Executing login logic"));
+});
+
+export default userRouter;
 
