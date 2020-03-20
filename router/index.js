@@ -1,7 +1,12 @@
 import express from 'express';
-import {WIDGETS_ENDPOINT, DOCUMENTS_ENDPOINT} from '../const';
+import {
+	WIDGETS_ENDPOINT, 
+	DOCUMENTS_ENDPOINT,
+	USERS_ENDPOINT,
+       } from '../const';
 import widgetRouter from './widget/index';
 import documentsRouter from './document/index';
+import usersRouter from './user/index';
 
 const router = express.Router();
 
@@ -9,8 +14,7 @@ router.use(WIDGETS_ENDPOINT, widgetRouter);
 
 router.use(DOCUMENTS_ENDPOINT, documentsRouter);
 
-//Calma Vander, nao me espanque... to aprendendo.
-router.use("/user", require("./user/index"));
+router.use(USERS_ENDPOINT, usersRouter);
 
 router.get('/', (req, res) =>
 	res.send(req.__('Hello world!'))
