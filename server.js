@@ -5,7 +5,7 @@ import i18n from 'i18n';
 import router from './router/index';
 
 i18n.configure({
-	locales:['en', 'pt'],
+	locales:['en', 'pt-BR', 'pt'],
 	directory: __dirname + '/locales'
 });
 
