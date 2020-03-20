@@ -1,26 +1,26 @@
 import { Router } from "express";
 
-const userRouter = Router();
+const usersRouter = Router();
 
-userRouter.get("/", (req, res) => {
+usersRouter.get("/", (req, res) => {
     res.send(res.__("Returning all users"));
 });
 
-userRouter.post("/", (req, res) => {
+usersRouter.post("/", (req, res) => {
     res.send(res.__("Saving new user", { route: req.url }));
 });
 
-userRouter.get("/:userId", (req, res) => {
+usersRouter.get("/:userId", (req, res) => {
     res.send(res.__("Returning user with id {{userId}}", { userId: req.params.userId }));
 });
 
-userRouter.put("/:userId", (req, res) => {
+usersRouter.put("/:userId", (req, res) => {
     res.send(res.__("Updating user with id {{userId}}", { userId: req.params.userId }));
 });
 
-userRouter.get("/login", (req, res) => {
+usersRouter.get("/login", (req, res) => {
     res.send(res.__("Executing login logic"));
 });
 
-export default userRouter;
+export default usersRouter;
 
