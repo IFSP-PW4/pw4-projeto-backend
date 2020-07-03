@@ -1,8 +1,9 @@
-import {BASE_API_ENDPOINT, PORT} from './const/env';
+import {PORT} from './const/env';
 import express from 'express';
 import helmet from 'helmet';
 import i18n from 'i18n';
 import router from './router/index';
+import {BASE_API_ENDPOINT} from "./const";
 
 i18n.configure({
 	locales:['en', 'pt-BR', 'pt'],
