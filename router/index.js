@@ -3,10 +3,10 @@ import widgetsRouter from '../modules/widgets/router';
 import documentsRouter from '../modules/documents/router';
 import usersRouter from '../modules/users/router';
 import flowsRouter from '../modules/flows/router';
-import {WIDGETS_ENDPOINT} from "../modules/widgets/const";
-import {USERS_ENDPOINT} from "../modules/users/const";
-import {FLOWS_ENDPOINT} from "../modules/flows/const";
-import {DOCUMENTS_ENDPOINT} from "../modules/documents/const";
+import {WIDGETS_ENDPOINT} from '../modules/widgets/const';
+import {USERS_ENDPOINT} from '../modules/users/const';
+import {FLOWS_ENDPOINT} from '../modules/flows/const';
+import {DOCUMENTS_ENDPOINT} from '../modules/documents/const';
 
 const router = express.Router();
 
