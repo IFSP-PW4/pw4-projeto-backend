@@ -31,7 +31,7 @@
         // ES6 Rules
         "no-var":"error",
         "prefer-const":"error",
-        "sort-imports":"warn",
+        "sort-imports":"off",
         "prefer-destructuring":["warn", {
             "array": true,
             "object": true
