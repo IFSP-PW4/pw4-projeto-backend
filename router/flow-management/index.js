@@ -1,5 +1,5 @@
 import express from 'express';
-import { FLOW_MANAGEMENT_ENDPOINT as endpoint } from '../../const';
+import { FLOW_MANAGEMENT_ENDPOINT as endpoint } from '../../const/env';
 
 const flowManagementRouter = express.Router();
 const resourceType = 'flow management';

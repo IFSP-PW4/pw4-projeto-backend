@@ -3,7 +3,7 @@ import {
 	WIDGETS_ENDPOINT, 
 	DOCUMENTS_ENDPOINT,
 	USERS_ENDPOINT,
-  FLOW_MANAGEMENT_ENDPOINT } from '../const';
+  FLOW_MANAGEMENT_ENDPOINT } from '../const/env';
 import widgetsRouter from './widget/index';
 import documentsRouter from './document/index';
 import usersRouter from './user/index';

@@ -1,5 +1,5 @@
 import express from 'express';
-import {WIDGETS_ENDPOINT as endpoint} from '../../const';
+import {WIDGETS_ENDPOINT as endpoint} from '../../const/env';
 
 const widgetsRouter = express.Router();
 const resourceType = 'widget';

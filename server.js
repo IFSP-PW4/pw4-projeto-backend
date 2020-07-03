@@ -1,4 +1,4 @@
-import {BASE_API_ENDPOINT, SERVER_PORT} from './const';
+import {BASE_API_ENDPOINT, SERVER_PORT} from './const/env';
 import express from 'express';
 import helmet from 'helmet';
 import i18n from 'i18n';
