@@ -1,5 +1,5 @@
 import express from 'express';
-import { DOCUMENTS_ENDPOINT as endpoint } from '../../const/env';
+import { DOCUMENTS_ENDPOINT as endpoint } from '../const';
 
 const documentsRouter = express.Router();
 const resourceType = 'document';
