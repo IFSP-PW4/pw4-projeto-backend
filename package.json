@@ -4,27 +4,30 @@
   "description": "",
   "main": "start.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PecoCaballero/projeto-pw4-backend.git"
+    "url": "git@github.com:IFSP-PW4/pw4-project-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PecoCaballero/projeto-pw4-backend/issues"
+    "url": "https://github.com/IFSP-PW4/pw4-project-backend/issues"
   },
-  "homepage": "https://github.com/PecoCaballero/projeto-pw4-backend#readme",
+  "homepage": "https://github.com/IFSP-PW4/pw4-project-backend#readme",
   "dependencies": {
     "express": "^4.17.1",
     "helmet": "^3.21.3",
-    "i18n": "^0.8.5"
+    "i18n": "^0.8.5",
+    "node-core-lib": "^0.11.11"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/register": "^7.8.6",
-    "eslint": "^6.8.0"
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.4"
   }
 }
