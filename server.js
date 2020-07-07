@@ -1,8 +1,10 @@
-import {BASE_API_ENDPOINT, SERVER_PORT} from './const';
+import {PORT} from './const/env';
 import express from 'express';
 import helmet from 'helmet';
 import i18n from 'i18n';
 import router from './router/index';
+import {BASE_API_ENDPOINT} from './const';
+import './database';
 
 i18n.configure({
 	locales:['en', 'pt-BR', 'pt'],
@@ -17,6 +19,6 @@ app.use(i18n.init);
 
 app.use(BASE_API_ENDPOINT, router);
 
-app.listen(SERVER_PORT, () =>
-	console.log(`Server running on port ${SERVER_PORT}`)
+app.listen(PORT, () =>
+	console.log(`Server running on port ${PORT}`)
 );
