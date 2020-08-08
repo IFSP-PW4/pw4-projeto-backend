@@ -7,6 +7,8 @@ import {WIDGETS_ENDPOINT} from '../modules/widgets/const';
 import {USERS_ENDPOINT} from '../modules/users/const';
 import {FLOWS_ENDPOINT} from '../modules/flows/const';
 import {DOCUMENTS_ENDPOINT} from '../modules/documents/const';
+import {WORKSPACES_ENDPOINT} from '../modules/workspaces/const';
+import workspacesRouter from '../modules/workspaces/router';
 
 const router = express.Router();
 
@@ -17,6 +19,8 @@ router.use(DOCUMENTS_ENDPOINT, documentsRouter);
 router.use(USERS_ENDPOINT, usersRouter);
 
 router.use(FLOWS_ENDPOINT, flowsRouter);
+
+router.use(WORKSPACES_ENDPOINT, workspacesRouter);
 
 router.get('/', (req, res) =>
 	res.send(req.__('Hello world!'))
