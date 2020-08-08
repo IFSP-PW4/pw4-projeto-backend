@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import PubSub from 'pubsub-js';
+import {WORKSPACE_ADDED, WORKSPACE_DELETED, WORKSPACE_UPDATED} from '../events';
 import {Workspace} from '../model';
 
 const workspacesRouter = express.Router();
@@ -31,6 +33,7 @@ workspacesRouter.post('/', jsonParser, (req, res) => {
 		}
 
 		console.log('Workspace saved successfully');
+		PubSub.publish(WORKSPACE_ADDED, savedWorkspace);
 		res.send(savedWorkspace);
 	});
 });
@@ -63,7 +66,10 @@ workspacesRouter.put('/:workspaceId', jsonParser, (req, res) => {
 			return workspace;
 		}
 	})
-		.then(workspace => res.send(workspace))
+		.then((workspace) => {
+			PubSub.publish(WORKSPACE_UPDATED, workspace);
+			res.send(workspace);
+		})
 		.catch(error => res.status(500).send(error));
 });
 
@@ -72,14 +78,17 @@ workspacesRouter.delete('/:workspaceId', (req, res) => {
 
 	console.log(`Deleting workspace with id ${id}`);
 
-	Workspace.findByIdAndRemove(id,(error, workspace) => {
+	Workspace.findByIdAndDelete(id,(error, workspace) => {
 		if (error) console.error('Error when attempting to delete workspace', error);
 		else {
 			console.log('Workspace deleted');
 			return workspace;
 		}
 	})
-		.then(workspace => res.send(workspace))
+		.then((workspace) => {
+			PubSub.publish(WORKSPACE_DELETED, id);
+			res.send(workspace);
+		})
 		.catch(error => res.status(500).send(error));
 });
 
