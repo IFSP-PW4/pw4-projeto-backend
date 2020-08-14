@@ -1,0 +1,3 @@
+export const STATE_ADDED = 'STATE_ADDED';
+export const STATE_UPDATED = 'STATE_UPDATED';
+export const STATE_DELETED = 'STATE_DELETED';

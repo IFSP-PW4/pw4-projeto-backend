@@ -5,7 +5,6 @@ import { FLOW_ADDED, FLOW_DELETED, FLOW_UPDATED } from "../events";
 import { Flow } from "../model";
 
 const flowsRouter = express.Router();
-const resourceType = "flow management";
 const jsonParser = bodyParser.json();
 
 flowsRouter.get("/", (req, res) => {
