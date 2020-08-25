@@ -1,13 +1,23 @@
 import { Router } from 'express';
+// importando módulo body-parser para pegar dados enviados dentro do corpo da requisição.
+import bodyParser from 'body-parser';
+import createNewUser from '../controller/userController';
+
 
 const usersRouter = Router();
 
-usersRouter.get('/', (req, res) => {
-	res.send(res.__('Returning all users'));
-});
+// configurando bodyParser
+usersRouter.use(bodyParser.urlencoded({extended:false}))
+usersRouter.use(bodyParser.json())
 
 usersRouter.post('/', (req, res) => {
-	res.send(res.__('Saving new user', { route: req.url }));
+	res.send(getAllUsers());
+});
+
+usersRouter.post('/registerUser', (req, res) => {
+	const password = req.body.password;
+	const email = req.body.email;
+	res.send(createNewUser(password,email));
 });
 
 usersRouter.get('/:userId', (req, res) => {
