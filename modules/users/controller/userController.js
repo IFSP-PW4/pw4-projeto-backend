@@ -1,57 +1,102 @@
 const crypto = require('crypto')
-const usersList = [];
+var usersList = [];
+var id = 1;
 
-function createNewUser(password, email){
-    if(!userExists(email)){
-        const newUser = {
+// funções usadas na aplicação
+
+function registerNewUser(password, email){
+    if(!emailExists(email)){
+        var newUser = {
             'email':email,
-            'password':password,
+            'password':returnHash(password),
+            'id': id
         }
+        id++;
         usersList.push(newUser)
-        return "User Registered";
+        return newUser // retornando usuario para ser usado em outra tela.
     }
-    return "User already exists"
+    return "Email already exists";
 }
 
+
 function logUser(password, email){
-    if(!userExists(email)){
-        let user = getUser(email);
-        if(user.email == returnHash(password)){
+    if(emailExists(email)){
+        let user = getUserByEmail(email);
+        if(user.password == returnHash(password)){
             return true;
         }
     }
     return "Invalid Email or Invalid Password";
 }
 
-function userExists (email){
-    for(let user in userExists){
-        if (user.email == email){
-            return true;
-        };
+function updateUser(id, newPassword, newEmail){
+    const user = getUserById(id);
+    if(user){
+        if(!userExists(email)){
+            user.email = newEmail;
+            user.password = returnHash(newPassword);
+            return newUser // retornando usuario para ser usado em outra tela.
+        }
+        return "Email already exists";
     }
-    return false;
+    return "Id not found";
 }
 
-function getUser (email){
-    for(let user in userExists){
-        if (user.email == email){
+
+// ----------------------------------------------
+
+
+// -----Funções testes do administrador---
+function getUserById (id){
+    for(let user of usersList){
+        if (user.id == id){
             return user;
         };
     }
     return false;
 }
 
+
+
 function getAllUsers(){
     return usersList;
 }
 
+// function deleteUser
+
+// -------------------------------------------
+
+
+
+// -----Funções usadas dentro de outras funções----
 function returnHash(password){
     let hash = crypto.createHash('md5').update(password).digest("hex");
-    console.log(hash)
+    return hash;
 }
 
-export default createNewUser;
+
+function emailExists (email){
+    for(let user of usersList){
+        console.log(user);
+        if (user['email'] == email){
+            return true;
+        };
+    }
+    return false;
+}
 
 
+function getUserByEmail (id){
+    for(let user of usersList){
+        console.log(user);
+        if (user['email'] == email){
+            return user;
+        };
+    }
+    return false;
+}
+//--------------------------------------
+
+export {registerNewUser, logUser,updateUser, getUserById, getAllUsers}  ;
 
 

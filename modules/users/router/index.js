@@ -1,8 +1,7 @@
 import { Router } from 'express';
 // importando módulo body-parser para pegar dados enviados dentro do corpo da requisição.
 import bodyParser from 'body-parser';
-import createNewUser from '../controller/userController';
-import {registerUser, logUser, getAllUsers, getUser} from '../controller/userController';
+import {registerNewUser, logUser, updateUser, getAllUsers, getUserById} from '../controller/userController';
 
 
 const usersRouter = Router();
@@ -11,30 +10,44 @@ const usersRouter = Router();
 usersRouter.use(bodyParser.urlencoded({extended:false}))
 usersRouter.use(bodyParser.json())
 
-usersRouter.post('/', (req, res) => {
+//-- rotas comuns --
+
+usersRouter.post('/register', (req, res) => {
+	const password = req.body.password;
+	const email = req.body.email;
+	res.send(registerNewUser(password,email));
+});
+
+
+usersRouter.post('/login', (req, res) => {
+	const password = req.body.password;
+	const email = req.body.email;
+	res.send(logUser(password,email));
+});
+
+usersRouter.post('/update', (req, res) => {
+	const id = req.body.id;
+	res.send(updateUser(id));
+});
+
+
+//---rotas de teste de administradores---
+
+usersRouter.post('/getAll', (req, res) => {
+	//const adminpassword = req.body.adminpassword; 
 	res.send(getAllUsers());
 });
 
-usersRouter.post('/registerUser', (req, res) => {
-	const password = req.body.password;
-	const email = req.body.email;
-	res.send(createNewUser(password,email));
-	res.send(registerUser(password,email));
+usersRouter.post('/getOne', (req, res) => {
+	//const adminpassword = req.body.adminpassword; 
+	const id = req.body.id;
+	res.send(getUserById(id));
 });
 
-usersRouter.get('/:userId', (req, res) => {
-	res.send(res.__('Returning user with id {{userId}}', { userId: req.params.userId }));
-usersRouter.get('/:userEmail', (req, res) => {
-	res.send(getUser(email));
-});
 
-usersRouter.put('/:userId', (req, res) => {
-	res.send(res.__('Updating user with id {{userId}}', { userId: req.params.userId }));
-});
 
-usersRouter.get('/login', (req, res) => {
-	res.send(res.__('Executing login logic'));
-});
+
+
 
 export default usersRouter;
 
