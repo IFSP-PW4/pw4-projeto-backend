@@ -32,10 +32,10 @@ function logUser(password, email){
 function updateUser(id, newPassword, newEmail){
     const user = getUserById(id);
     if(user){
-        if(!userExists(email)){
+        if(!emailExists(newEmail)){
             user.email = newEmail;
             user.password = returnHash(newPassword);
-            return newUser // retornando usuario para ser usado em outra tela.
+            return user // retornando usuario para ser usado em outra tela.
         }
         return "Email already exists";
     }
@@ -78,7 +78,7 @@ function returnHash(password){
 function emailExists (email){
     for(let user of usersList){
         console.log(user);
-        if (user['email'] == email){
+        if (user.email == email){
             return true;
         };
     }
@@ -86,10 +86,10 @@ function emailExists (email){
 }
 
 
-function getUserByEmail (id){
+function getUserByEmail (email){
     for(let user of usersList){
         console.log(user);
-        if (user['email'] == email){
+        if (user.email == email){
             return user;
         };
     }

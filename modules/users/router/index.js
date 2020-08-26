@@ -27,7 +27,9 @@ usersRouter.post('/login', (req, res) => {
 
 usersRouter.post('/update', (req, res) => {
 	const id = req.body.id;
-	res.send(updateUser(id));
+	const newPassword = req.body.password;
+	const newEmail = req.body.email;
+	res.send(updateUser(id,newPassword,newEmail));
 });
 
 
