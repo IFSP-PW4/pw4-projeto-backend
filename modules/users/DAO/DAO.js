@@ -5,102 +5,119 @@ var User = mongoose.model('User', userSchema);
 function create(json){
 
     var newUser = new User(json);
-    newUser.save(function (error){
+    var response = "error";
+
+    newUser.save(function teste(error){
         if(error){
-            return error;
+            response = error;
         }
         else{
             console.log("User created");
             console.log(newUser._id);
-            return newUser._id;
-            
+            response = newUser._id;
         }
     });
-
-    
+    return response;  
 }
 
 function findAll(){
 
+    var response = "error";
+
     User.find({}).lean().exec(function(error,result){
         if(error){
-            return error;
+            response = error;
         }
         else{
             console.log(result);
-            return result;
+            response = result;
         }
     });
+    return response;
     
 }
 
 function findByEmail(email){
+    var response = "error";
 
     User.find({email: email}).lean().exec(function(error,result){
         if(error){
-            return error;
+            reponse = error;
         }
         else{
             if(result.length == 0){
-                return null;
+                response = null;
             }
             console.log(result[0]);
-            return result[0]; // sempre possuirá só um elemento, pois não permito ele possuir 2 emails iguais.
+            response = result[0]; // sempre possuirá só um elemento, pois não permito ele possuir 2 emails iguais.
            
         }
     });
+    return response;
 }
 
 function emailExists(email){
+    var response = "error";
 
     User.find({email: email}).lean().exec(function(error,result){
         if(error){
-            return error;
+            response = error;
         }
         else{
-            console.log("result = "+result);
-            console.log("result.length = "+result.length);
+            //console.log("result = "+result);
+            //console.log("result.length = "+result.length);
             if(result.length == 0){
-                return false;
+                response = false;
             }
-            return true;
+            response = true;
            
         }
     });
+    return response;
 }
 
 
 function findById(id){
+    var response = "error";
+
     User.findById(id).lean().exec(function(error,result){
         if(error){
-            return error;
+            response = error;
         }
         else{
-            return result;
+            response = result;
         }
     });
+    return response;
 }
 
 function deleteAll(){
+    var response = "error";
+
     User.deleteMany({},function (error){
         if(error){
-            return error;
+            response = error;
         }
         else{
             console.log("All Users removed");
         }
     });
+    return response;
 }
 
 function deleteOne(id){
+    var response = "error";
+
     User.deleteOne({_id:id},function (error){
         if(error){
-            return error;
+            response = error;
         }
         else{
             console.log("User removed"); 
         }
     });
+    var response = "error";
+
 }
 
 module.exports = {create,findAll,findByEmail,emailExists,findById,deleteAll,deleteOne}
