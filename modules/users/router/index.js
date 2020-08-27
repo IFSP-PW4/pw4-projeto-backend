@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // importando módulo body-parser para pegar dados enviados dentro do corpo da requisição.
 import bodyParser from 'body-parser';
-import {registerNewUser, logUser, updateUser, getAllUsers, getUserById} from '../controller/userController';
+import {register, log,update, getById, getAll,getByEmail} from '../controller';
 
 
 const usersRouter = Router();
@@ -15,21 +15,21 @@ usersRouter.use(bodyParser.json())
 usersRouter.post('/register', (req, res) => {
 	const password = req.body.password;
 	const email = req.body.email;
-	res.send(registerNewUser(password,email));
+	res.json(register(password,email));
 });
 
 
 usersRouter.post('/login', (req, res) => {
 	const password = req.body.password;
 	const email = req.body.email;
-	res.send(logUser(password,email));
+	res.send(log(password,email));
 });
 
 usersRouter.post('/update', (req, res) => {
 	const id = req.body.id;
 	const newPassword = req.body.password;
 	const newEmail = req.body.email;
-	res.send(updateUser(id,newPassword,newEmail));
+	res.send(update(id,newPassword,newEmail));
 });
 
 
@@ -37,14 +37,29 @@ usersRouter.post('/update', (req, res) => {
 
 usersRouter.post('/getAll', (req, res) => {
 	//const adminpassword = req.body.adminpassword; 
-	res.send(getAllUsers());
+	res.json(getAll());
 });
 
-usersRouter.post('/getOne', (req, res) => {
+usersRouter.post('/getOneById', (req, res) => {
 	//const adminpassword = req.body.adminpassword; 
 	const id = req.body.id;
-	res.send(getUserById(id));
+	res.send(getById(id));
 });
+
+// PROVISORIO
+usersRouter.post('/getOneByEmail', (req, res) => {
+	//const adminpassword = req.body.adminpassword; 
+	const email = req.body.email;
+	res.json(getByEmail(email));
+});
+
+usersRouter.post('/deleteAll', (req, res) => {
+	//const adminpassword = req.body.adminpassword; 
+	const email = req.body.email;
+	res.json(getByEmail(email));
+});
+
+
 
 
 

@@ -14,3 +14,5 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
 	console.log(`Successfully connected to the "${DB_DATABASE_NAME}" database as "${DB_USER}"`);
 });
+
+export default mongoose;
