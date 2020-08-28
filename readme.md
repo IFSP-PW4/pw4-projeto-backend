@@ -30,6 +30,6 @@
 
 ```git add .```
 
-```git commit -m '[NOME_DA_FEATURE] DIGITE_UMA_BREVE_DESCRIÇÃO_AQUI' ```
+```git commit -m '[NÚMERO_DA_ISSUE] DIGITE_UMA_BREVE_DESCRIÇÃO_AQUI' ```
 
 ```git push -u origin NOME_DA_BRANCH ```
