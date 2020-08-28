@@ -3,7 +3,7 @@
 
 * *Nenhum commit deve ser feito diretamente na branch develop*
 
-* Todo card no Trello deve tornar-se uma nova branch e então as modificações necessárias serão feitas nesta nova branch
+* Todo card no [Trello](https://trello.com/b/BPjMBICR/pw4-project) deve tornar-se uma nova branch e então as modificações necessárias serão feitas nesta nova branch
   
 *  Assim que finalizada a tarefa descrita no trello o dono da branch deve realizar um *merge request* no GitHub. Qualquer outra pessoa pode fazer o code review, aprovar e mergear a branch à develop (o mesmo vale para reprovação de código e solitação de rework).
   
