@@ -7,7 +7,7 @@ function create(json){
     var newUser = new User(json);
     var response = "error";
 
-    newUser.save(function teste(error){
+    newUser.save(function (error){
         if(error){
             response = error;
         }
@@ -38,7 +38,7 @@ function findAll(){
 }
 
 function findByEmail(email){
-    var response = "error";
+    var response = null;
 
     User.find({email: email}).lean().exec(function(error,result){
         if(error){
@@ -57,7 +57,7 @@ function findByEmail(email){
 }
 
 function emailExists(email){
-    var response = "error";
+    var response = null;
 
     User.find({email: email}).lean().exec(function(error,result){
         if(error){
@@ -85,6 +85,7 @@ function findById(id){
             response = error;
         }
         else{
+            console.log(result);
             response = result;
         }
     });
@@ -113,7 +114,7 @@ function deleteOne(id){
             response = error;
         }
         else{
-            console.log("User removed"); 
+            console.log(".."); 
         }
     });
     var response = "error";

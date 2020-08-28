@@ -6,14 +6,14 @@ const crypto = require('crypto')
 // funções usadas na aplicação
 
 function register(password, email){
-    console.log(DAO.emailExists(email));
+    //console.log(DAO.emailExists(email));
     if(!DAO.emailExists(email)){
         const newUser = {
             'email':email,
             'password':returnHash(password),
         }
         return DAO.create(newUser);
-   }
+     }
     return "Email already exists";
 }
 
@@ -56,7 +56,13 @@ function getAll(){
     return DAO.findAll();
 }
 
-// function deleteUser
+function deleteAll(){
+   return DAO.deleteAll();
+}
+
+function deleteOne(id){
+    return DAO.deleteOne(id);
+}
 
 // -------------------------------------------
 
@@ -70,6 +76,6 @@ function returnHash(password){
 
 //--------------------------------------
 
-export {register, log,update, getById, getAll} ;
+export {register, log,update, getById, getAll,deleteAll,deleteOne} ;
 
 

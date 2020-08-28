@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // importando módulo body-parser para pegar dados enviados dentro do corpo da requisição.
 import bodyParser from 'body-parser';
-import {register, log,update, getById, getAll,getByEmail} from '../controller';
+import  {register, log,update, getById, getAll,deleteAll,deleteOne} from '../controller';
 
 
 const usersRouter = Router();
@@ -47,6 +47,7 @@ usersRouter.post('/getOneById', (req, res) => {
 });
 
 // PROVISORIO
+
 usersRouter.post('/getOneByEmail', (req, res) => {
 	//const adminpassword = req.body.adminpassword; 
 	const email = req.body.email;
@@ -55,12 +56,20 @@ usersRouter.post('/getOneByEmail', (req, res) => {
 
 usersRouter.post('/deleteAll', (req, res) => {
 	//const adminpassword = req.body.adminpassword; 
+	res.json(deleteAll());
+});
+
+usersRouter.post('/deleteOne', (req, res) => {
+	//const adminpassword = req.body.adminpassword;
+	const id = req.body.id;
+	res.json(deleteOne(id));
+});
+
+usersRouter.post('/deleteAll', (req, res) => {
+	//const adminpassword = req.body.adminpassword; 
 	const email = req.body.email;
 	res.json(getByEmail(email));
 });
-
-
-
 
 
 
